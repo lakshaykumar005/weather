@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: background 0.5s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .weather-forecast-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .weather-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .forecast-graph {
+            flex: 2;
+            min-width: 400px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .wind-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .compass {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid black;
+            position: relative;
+        }
+        .compass::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 20px;
+            background: red;
+            transform: translate(-50%, -100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Weather Forecast</h2>
+        <input type="text" id="city" placeholder="Enter city name">
+        
+        <!-- Buttons in a single row -->
+        <div class="button-container">
+            <button id="getWeatherBtn" onclick="getWeather()">Get Weather</button>
+            <button id="voiceSearchBtn" onclick="startVoiceSearch()">🎤 Voice Search</button>
+            <button id="useLocationBtn" onclick="getMyLocation()">📍 Use My Location</button>
+        </div>
+        
+        <!-- Weather Info and Forecast Chart in Single Row -->
+        <div class="weather-forecast-container">
+            <div class="weather-info">
+                <div class="result" id="weatherResult"></div>
+                
+                <div class="wind-container">
+                    <p><strong>Wind Speed:</strong> <span id="wind-speed"></span></p>
+                    <div id="wind-compass" class="compass"></div>
+                </div>
+            </div>
+            <div id="airQualityResult">
+                <p>AQI: <span id="aqi">-</span></p>
+                <p>PM2.5: <span id="pm25">-</span></p>
+                <p>PM10: <span id="pm10">-</span></p>
+            </div>
+            <div id="healthResult">
+                <p>COVID Cases: <span id="covid-cases">-</span></p>
+                <p>Deaths: <span id="covid-deaths">-</span></p>
+                <p>Recovered: <span id="covid-recovered">-</span></p>
+            </div>
+                        
+            <div class="forecast-graph">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

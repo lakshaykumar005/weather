@@ -1,0 +1,41 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+}
+
+button {
+    background: linear-gradient(135deg, #28a745, #218838); /* Smooth gradient */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px; /* Slightly rounded corners */
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.05); /* Slight enlargement on hover */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: scale(0.95); /* Button press effect */
+}
+
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 5px;
+    }
+
+    button {
+        width: 100%; /* Full width buttons on mobile */
+    }
+}
